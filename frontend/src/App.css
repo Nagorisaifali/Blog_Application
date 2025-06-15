@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: rgb(10, 5, 5);
+    color: white; 
+}
+html{
+    overflow-x: hidden;
+}
+
+:root {
+    --bg-2 : #0c0c0c ; 
+}
+
+.navlink{
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-size: medium;
+    font-weight: 700;
+}
+.navlink::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    bottom: -2px;
+    right: 0;
+    transition: ease-in .3s;
+
+}
+.navlink:hover{
+     color:rgb(123, 60, 123)
+}
+.sp-text{
+    color:rgb(123, 60, 123)
+}
+.btnnormal{
+    padding: 10px;
+    min-width: 130px;
+    background-color: rgb(123, 60, 123);
+    color : #fff ; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: ease-in .3s;
+}
+.btnnormal:hover{
+    background-color: #fff;
+    color:rgb(123, 60, 123);
+}
+.blogsCon{
+    display: grid;
+    grid-template-columns: auto auto auto auto; 
+    grid-gap: 15px;
+    gap: 15px;
+
+}
+
+.blogsCon .blog{
+    width: 300px;
+    height: 300px;
+    padding: 10px; 
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer; 
+    transition: ease-in .3s;
+    background-color: var(--bg-2);
+}
+
+.blogsCon .blog:hover{
+    transform: translate(-4%);
+}
+
+.inputBox {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    background-color: #0c0c0c;
+    border-radius: 5px;
+    border: 1px solid rgb(32,32,32);
+}
+.inputBox input{
+    flex:1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff; 
+}
+
+.inputBox textarea{
+    flex:1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    min-height: 100px;
+    resize: vertical;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff; 
+}
+#file{
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    background-color: #0c0c0c;
+    border-radius: 5px;
+    border: 1px solid rgb(32,32,32);
+}
