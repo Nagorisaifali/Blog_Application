@@ -8,6 +8,9 @@ const path = require('path') ;
 const BlogModel = require("../models/Blog") ; 
 const { decode } = require("punycode");
 
+const Comment = require("../models/Comment") ; 
+const Like = require("../models/Like") ; 
+
 const JWT_SECRET = "Saifu78@";
 
 
@@ -141,6 +144,95 @@ router.post("/getBlog" , async (req , res) => {
     })
   }
 })
+
+
+
+router.post('/addComment' , async (req , res) => {
+  const { blogId , userId , username , text } = req.body ; 
+  try{
+    const comment = await Comment.create({
+      blogId , userId , username , text 
+    }) ; 
+    res.json({
+      success:true , 
+      comment , 
+    });
+  }
+  catch(err){
+    res.status(500).json({ success : false , msg : "Failed to add comment" }) ; 
+  }
+}) ; 
+
+router.post("/getComments" , async (req , res) => {
+  const { blogId } = req.body ; 
+  try{
+    const comments = await Comment.find({blogId}).sort({ createdAt : -1 }) ; 
+    res.json({success : true , comments}) ; 
+  }
+  catch(err){
+    res.status(500).json({ success: false, msg: 'Failed to get comments' });
+  }
+})
+
+router.post('/toggleLike' , async (req , res) => {
+  const {blogId , userId} = req.body ; 
+  try{
+    const like = await Like.findOne({blogId , userId}) ; 
+    if(like){
+      await Like.deleteOne({ _id : Like._id }) ; 
+      res.json({ success : true , liked : false }) ; 
+    }
+    else {
+      await Like.create({blogId , userId}) ; 
+      res.json({success : true , liked : true }) ; 
+    }
+  }
+  catch (err) {
+    res.status(500).json({ success: false, msg: 'Error toggling like' });
+  }
+})
+
+
+router.post('/getLikes' , async (req , res) => {
+  const { blogId } = req.body ; 
+  try{
+    const count = await Like.countDocuments({ blogId });
+    res.json({ success: true, count });
+  }
+  catch(err){
+    res.status(500).json({ success: false, msg: 'Failed to get like count' });
+  }
+})
+
+
+
+router.put("/editBlog/:id", async (req, res) => {
+  const { title, desc, content } = req.body;
+  const { id } = req.params;
+
+  try {
+    const blog = await BlogModel.findByIdAndUpdate(
+      id,
+      { title, desc, content, updatedAt: Date.now() },
+      { new: true }
+    );
+    res.json({ success: true, msg: "Blog updated", blog });
+  } catch (err) {
+    res.status(500).json({ success: false, msg: "Error updating blog" });
+  }
+});
+
+router.delete("/deleteBlog/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await BlogModel.findByIdAndDelete(id);
+    res.json({ success: true, msg: "Blog deleted" });
+  } catch (err) {
+    res.status(500).json({ success: false, msg: "Error deleting blog" });
+  }
+});
+
+
 
 
 

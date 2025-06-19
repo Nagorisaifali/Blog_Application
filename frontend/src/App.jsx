@@ -11,6 +11,9 @@ import UploadBlog from './pages/UploadBlog'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Services from './pages/Service'
+import EditBlog from './pages/EditBlog'
+
+
 
 function App() {
   
@@ -26,6 +29,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path = "/blog/:blogId" element={<SingleBlog/>} />
           <Route path = "/uploadBlog" element={<UploadBlog/>} />
+          <Route path="/edit-blog/:id" element={<EditBlog />} />
           <Route path = "*" element={<Nopage/>} />
           
         </Routes>
