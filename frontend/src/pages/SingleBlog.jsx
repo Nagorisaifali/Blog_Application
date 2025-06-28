@@ -74,6 +74,7 @@ const SingleBlog = () => {
   return (
    <>
     <Navbar/>
+    
     <div className='single-blog px-[100px] mt-4'>
         <div className='flex w-full min-h-[400px] pt-5'>
             <div className="left w-[40%] h-full  ">
