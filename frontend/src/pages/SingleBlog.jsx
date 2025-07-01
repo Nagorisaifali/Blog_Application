@@ -46,8 +46,6 @@ const SingleBlog = () => {
                 console.error(err);
               }
       };
-
-
       
 
       const handleDelete = async () => {

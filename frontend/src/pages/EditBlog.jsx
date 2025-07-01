@@ -56,6 +56,7 @@ const EditBlog = () => {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          
         />
         <textarea
           className="w-full p-2 border mb-4"
