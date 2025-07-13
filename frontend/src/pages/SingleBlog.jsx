@@ -104,7 +104,6 @@ const SingleBlog = () => {
         </div>
 
 
-
         <div className='mt-1'>
             {
                 data ? parse(data.content) :  "" 
