@@ -12,6 +12,7 @@ import CommentSection from '../components/CommentSection';
 const userId = localStorage.getItem("userId");
 const username = localStorage.getItem("username");
 
+
 const SingleBlog = () => {
 
     let { blogId } = useParams() ; 
@@ -72,6 +73,7 @@ const SingleBlog = () => {
   return (
    <>
     <Navbar/>
+
     
     <div className='single-blog px-[100px] mt-4'>
         <div className='flex w-full min-h-[400px] pt-5'>
@@ -90,7 +92,7 @@ const SingleBlog = () => {
                       onClick={() => navigate(`/edit-blog/${data._id}`)}
                     >
                       Edit Blog
-                    </button>
+                    </button>          
                     <button
                       className="bg-red-500 text-white px-4 py-2 rounded"
                       onClick={handleDelete}
@@ -110,6 +112,7 @@ const SingleBlog = () => {
             }
         </div>
 
+
         <div className="mt-6">
           <LikeButton blogId={blogId} userId={userId} />
         </div>
@@ -117,12 +120,9 @@ const SingleBlog = () => {
         
         <div className="mt-6">
           <CommentSection blogId={blogId} userId={userId} username={username}/>
-        </div>
-
-        
+        </div>    
 
     </div>
-
           
 
    </>
