@@ -233,22 +233,16 @@ router.delete("/deleteBlog/:id", async (req, res) => {
 });
 
 
-// Delete comment by ID
-router.delete('/deleteComment/:id', async (req, res) => {
-  const commentId = req.params.id;
 
+router.post('/deleteComment', async (req, res) => {
+  const { commentId } = req.body;
   try {
-    const deleted = await Comment.findByIdAndDelete(commentId);
-    if (!deleted) {
-      return res.json({ success: false, msg: "Comment not found" });
-    }
-    return res.json({ success: true, msg: "Comment deleted successfully" });
+    await Comment.findByIdAndDelete(commentId);
+    res.json({ success: true, message: 'Comment deleted' });
   } catch (err) {
-    console.error(err);
-    return res.json({ success: false, msg: "Error deleting comment" });
+    res.status(500).json({ success: false, message: 'Error deleting comment' });
   }
 });
-
 
 
 

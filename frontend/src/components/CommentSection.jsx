@@ -1,3 +1,6 @@
+
+
+
 import React, { useEffect, useState } from 'react';
 import { api_base_url } from '../helper';
 
@@ -29,6 +32,18 @@ const CommentSection = ({ blogId, userId, username }) => {
     }
   };
 
+  const handleDeleteComment = async (commentId) => {
+    const res = await fetch(`${api_base_url}/api/auth/deleteComment`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ commentId }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      fetchComments();
+    }
+  };
+
   useEffect(() => {
     fetchComments();
   }, [blogId]);
@@ -48,10 +63,15 @@ const CommentSection = ({ blogId, userId, username }) => {
         </button>
       </div>
       <div className="space-y-2">
-        {comments.map((cmt, idx) => (
-          <div key={idx} className="bg-[#1a1a1a] text-white p-3 rounded">
-            <p className="font-bold">{cmt.username}</p>
-            <p>{cmt.text}</p>
+        {comments.map((cmt) => (
+          <div key={cmt._id} className="bg-[#1a1a1a] text-white p-3 rounded flex justify-between items-center">
+            <div>
+              <p>{cmt.text}</p>
+              <p className="font-bold">{cmt.username}</p>
+            </div>
+            <button className="btnnormal ml-4" onClick={() => handleDeleteComment(cmt._id)}>
+              Delete
+            </button>
           </div>
         ))}
       </div>
@@ -60,4 +80,3 @@ const CommentSection = ({ blogId, userId, username }) => {
 };
 
 export default CommentSection;
-
