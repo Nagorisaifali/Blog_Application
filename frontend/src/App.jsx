@@ -30,7 +30,6 @@ function App() {
           <Route path = "/uploadBlog" element={<UploadBlog/>} />
           <Route path="/edit-blog/:id" element={<EditBlog />} />
           <Route path = "*" element={<Nopage/>} />
-          
         </Routes>
       </BrowserRouter>
     </>
