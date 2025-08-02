@@ -13,6 +13,7 @@ const Hero = () => {
   const learn = () =>{
     navigate('/services')
   }
+  
 
   return (
     <div className="hero flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-8 lg:px-[100px]" style={{ minHeight: "calc(100vh - 80px)" }}>
