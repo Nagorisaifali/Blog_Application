@@ -29,6 +29,7 @@ const Hero = () => {
         </div>
       </div>
 
+
       {/* Right Image */}
       <div className="right w-full lg:w-1/2 flex justify-center items-center py-4">
         <img
