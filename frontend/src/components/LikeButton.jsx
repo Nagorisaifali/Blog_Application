@@ -33,6 +33,7 @@ const LikeButton = ({ blogId, userId }) => {
     fetchLikes();
   }, [blogId]);
 
+  
   return (
     <div className="flex items-center gap-2 mt-4">
       <button onClick={toggleLike} className={`btnnormal ${liked ? 'text-red-500' : ''}`}>
