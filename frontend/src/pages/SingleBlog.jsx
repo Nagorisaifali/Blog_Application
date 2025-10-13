@@ -123,8 +123,7 @@ const SingleBlog = () => {
         </div>    
 
     </div>
-          
-
+        
    </>
   )
 }
