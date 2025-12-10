@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path') ; 
 const app = express();
 
+
 app.use(cors());
 app.use(express.json());
 
@@ -17,3 +18,5 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogApp")
     console.log("MongoDB connected");
     app.listen(3000, () => console.log("Server running on port 3000"));
   }).catch(err => console.error(err));
+
+
