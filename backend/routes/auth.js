@@ -104,7 +104,6 @@ router.post('/uploadBlog' , upload.single('file') , async (req , res) => {
   }
 })
 
-
 router.post("/getBlogs" , async (req , res) =>{
   let {token} = req.body ; 
   let decode = jwt.verify(token ,  JWT_SECRET) ; 
