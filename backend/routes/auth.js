@@ -106,7 +106,6 @@ router.post('/uploadBlog' , upload.single('file') , async (req , res) => {
   }
 })
 
-
 router.post("/getBlogs" , async (req , res) =>{
   let {token} = req.body ; 
   let decode = jwt.verify(token ,  JWT_SECRET) ; 
@@ -245,9 +244,6 @@ router.post('/deleteComment', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error deleting comment' });
   }
 });
-
-
-
 
 
 module.exports = router;
