@@ -10,8 +10,10 @@ const { decode } = require("punycode");
 
 const Comment = require("../models/Comment") ; 
 const Like = require("../models/Like") ; 
+const user = require("../models/user");
 
 const JWT_SECRET = "Saifu78@";
+
 
 
 // Signup
