@@ -22,5 +22,3 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogApp")
     console.log("MongoDB connected");
     app.listen(PORT, () => console.log("Server running on port 3000"));
   }).catch(err => console.error(err));
-
-  
