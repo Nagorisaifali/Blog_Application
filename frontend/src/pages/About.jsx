@@ -6,7 +6,6 @@ const About = () => {
   return (
 
     <>
-   
     <div className="px-[100px] py-10 text-center">
       <h1 className="text-4xl font-bold mb-4">About Us</h1>
       <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
@@ -31,9 +30,9 @@ const About = () => {
         share your thoughts in the comments, and become part of a growing community that loves to build and learn together.
       </p>
     </div>
-
      </>
   );
 };
 
 export default About;
+
